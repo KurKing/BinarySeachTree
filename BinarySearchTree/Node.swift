@@ -1,13 +1,13 @@
 //
 //  Node.swift
-//  TreeSet
+//  Tree
 //
 //  Created by Oleksiy on 15.01.2021.
 //
 
 import Foundation
 
-///Node of TreeSet
+///Node of Tree
 class Node<T: Comparable>: Comparable {
     
     let value: T

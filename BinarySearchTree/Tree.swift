@@ -1,14 +1,14 @@
 //
-//  TreeSet.swift
-//  TreeSet
+//  Tree.swift
+//  Tree
 //
 //  Created by Oleksiy on 15.01.2021.
 //
 
 import Foundation
 
-///TreeSet class
-class TreeSet<T: Comparable>{
+///Tree class
+class Tree<T: Comparable>{
     
     private var rootNode: Node<T>?
     

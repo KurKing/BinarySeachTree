@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D29705EB25B1C9A800206224 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29705EA25B1C9A800206224 /* main.swift */; };
 		D29705F325B1CA6C00206224 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29705F225B1CA6C00206224 /* Node.swift */; };
-		D29705F625B1CB1D00206224 /* TreeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29705F525B1CB1D00206224 /* TreeSet.swift */; };
+		D29705F625B1CB1D00206224 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29705F525B1CB1D00206224 /* Tree.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,10 +25,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D29705E725B1C9A800206224 /* TreeSet */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TreeSet; sourceTree = BUILT_PRODUCTS_DIR; };
+		D29705E725B1C9A800206224 /* BinarySearchTree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BinarySearchTree; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29705EA25B1C9A800206224 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D29705F225B1CA6C00206224 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		D29705F525B1CB1D00206224 /* TreeSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSet.swift; sourceTree = "<group>"; };
+		D29705F525B1CB1D00206224 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +45,7 @@
 		D29705DE25B1C9A800206224 = {
 			isa = PBXGroup;
 			children = (
-				D29705E925B1C9A800206224 /* TreeSet */,
+				D29705E925B1C9A800206224 /* BinarySearchTree */,
 				D29705E825B1C9A800206224 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,27 +53,27 @@
 		D29705E825B1C9A800206224 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D29705E725B1C9A800206224 /* TreeSet */,
+				D29705E725B1C9A800206224 /* BinarySearchTree */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D29705E925B1C9A800206224 /* TreeSet */ = {
+		D29705E925B1C9A800206224 /* BinarySearchTree */ = {
 			isa = PBXGroup;
 			children = (
 				D29705EA25B1C9A800206224 /* main.swift */,
 				D29705F225B1CA6C00206224 /* Node.swift */,
-				D29705F525B1CB1D00206224 /* TreeSet.swift */,
+				D29705F525B1CB1D00206224 /* Tree.swift */,
 			);
-			path = TreeSet;
+			path = BinarySearchTree;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D29705E625B1C9A800206224 /* TreeSet */ = {
+		D29705E625B1C9A800206224 /* BinarySearchTree */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D29705EE25B1C9A800206224 /* Build configuration list for PBXNativeTarget "TreeSet" */;
+			buildConfigurationList = D29705EE25B1C9A800206224 /* Build configuration list for PBXNativeTarget "BinarySearchTree" */;
 			buildPhases = (
 				D29705E325B1C9A800206224 /* Sources */,
 				D29705E425B1C9A800206224 /* Frameworks */,
@@ -83,9 +83,9 @@
 			);
 			dependencies = (
 			);
-			name = TreeSet;
+			name = BinarySearchTree;
 			productName = TreeSet;
-			productReference = D29705E725B1C9A800206224 /* TreeSet */;
+			productReference = D29705E725B1C9A800206224 /* BinarySearchTree */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D29705E225B1C9A800206224 /* Build configuration list for PBXProject "TreeSet" */;
+			buildConfigurationList = D29705E225B1C9A800206224 /* Build configuration list for PBXProject "BinarySearchTree" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D29705E625B1C9A800206224 /* TreeSet */,
+				D29705E625B1C9A800206224 /* BinarySearchTree */,
 			);
 		};
 /* End PBXProject section */
@@ -127,7 +127,7 @@
 			files = (
 				D29705EB25B1C9A800206224 /* main.swift in Sources */,
 				D29705F325B1CA6C00206224 /* Node.swift in Sources */,
-				D29705F625B1CB1D00206224 /* TreeSet.swift in Sources */,
+				D29705F625B1CB1D00206224 /* Tree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +274,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D29705E225B1C9A800206224 /* Build configuration list for PBXProject "TreeSet" */ = {
+		D29705E225B1C9A800206224 /* Build configuration list for PBXProject "BinarySearchTree" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D29705EC25B1C9A800206224 /* Debug */,
@@ -283,7 +283,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D29705EE25B1C9A800206224 /* Build configuration list for PBXNativeTarget "TreeSet" */ = {
+		D29705EE25B1C9A800206224 /* Build configuration list for PBXNativeTarget "BinarySearchTree" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D29705EF25B1C9A800206224 /* Debug */,
