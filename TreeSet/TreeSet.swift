@@ -27,7 +27,7 @@ class TreeSet<T: Comparable>{
         }
         
         // if root node exist -> add node to root node
-        addNode(newValue: newValue, node: node)
+        add(newValue: newValue, node: node)
         
         // balance tree every 10 additions
         if size % 10 == 0 {
@@ -35,7 +35,7 @@ class TreeSet<T: Comparable>{
         }
     }
     
-    private func addNode(newValue: T, node: Node<T>){
+    private func add(newValue: T, node: Node<T>){
         
         // if newValue < current node value -> newValue go to left | else -> go to right
         if newValue < node.value {
@@ -46,7 +46,7 @@ class TreeSet<T: Comparable>{
             }
             
             // recursion (if left node exist)
-            addNode(newValue: newValue, node: leftNode)
+            add(newValue: newValue, node: leftNode)
             
         } else {
             
@@ -56,16 +56,29 @@ class TreeSet<T: Comparable>{
             }
             
             // recursion (if rigth node exist)
-            addNode(newValue: newValue, node: rightNode)
+            add(newValue: newValue, node: rightNode)
             
         }
     }
     
     //MARK: Remove node
-    func removeNode(){
-        size -= 1
+    /// use to delete a node;
+    /// true - mean success, false - node doesn't exist, can't remove
+    func removeNode(with value: T) -> Bool{
         
-        //TODO
+        
+        guard let rootNode = self.rootNode else {
+            return false
+        }
+        
+        guard let nodeToRemove = getNode(with: value, node: rootNode) else {
+            return false
+        }
+        
+        print(nodeToRemove.value)
+        
+        //size -= 1
+        return true
     }
     
     //MARK: Balance tree
@@ -74,6 +87,23 @@ class TreeSet<T: Comparable>{
     }
     
     //MARK: Getters
+    ///get node by value
+    private func getNode(with value: T, node: Node<T>?) -> Node<T>?{
+        
+        guard let node = node else {
+            return nil
+        }
+        
+        if value == node.value {
+            return node
+        }
+        
+        if value < node.value {
+            return getNode(with: value, node: node.leftNode)
+        } else {
+            return getNode(with: value, node: node.rigthNode)
+        }
+    }
     
     /// get most left node value
     func getMinValue() -> T? {
