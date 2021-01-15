@@ -41,7 +41,7 @@ class TreeSet<T: Comparable>{
         if newValue < node.value {
             
             guard let leftNode = node.leftNode else {
-                node.leftNode = Node(value: newValue)
+                node.leftNode = Node(value: newValue, parent: node)
                 return
             }
             
@@ -51,7 +51,7 @@ class TreeSet<T: Comparable>{
         } else {
             
             guard let rightNode = node.rigthNode else {
-                node.rigthNode = Node(value: newValue)
+                node.rigthNode = Node(value: newValue, parent: node)
                 return
             }
             
@@ -81,9 +81,9 @@ class TreeSet<T: Comparable>{
         return true
     }
     
-    //MARK: Balance tree
+    //MARK: Balance tree (TODO)
     private func balanceTree(){
-        //TODO
+        
     }
     
     //MARK: Getters
@@ -130,5 +130,27 @@ class TreeSet<T: Comparable>{
     /// get amount of nodes
     func getSize() -> Int {
         return size
+    }
+    
+    //MARK: - Traverse
+    ///print all nodes values
+    func traverse(){
+        guard let rootNode = self.rootNode else {
+            print("nil")
+            return
+        }
+        
+        traverse(node: rootNode)
+    }
+    private func traverse(node: Node<T>){
+        if let leftNode = node.leftNode {
+            traverse(node: leftNode)
+        }
+        
+        if let rigthNode = node.rigthNode {
+            traverse(node: rigthNode)
+        }
+        
+        print(node.value)
     }
 }
