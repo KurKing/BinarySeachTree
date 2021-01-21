@@ -9,19 +9,20 @@ import Foundation
 
 let tree = Tree<Int>()
 
-tree.add(5)
+for i in 0..<7 {
+    tree.add(Int.random(in: -5...5))
+}
 
-tree.add(3)
-tree.add(4)
-tree.add(2)
+var toPrint = ""
+for i in tree.toArray() {
+    toPrint += "\(i.value) "
+}
+print(toPrint)
 
-tree.add(7)
-tree.add(6)
-tree.add(8)
+tree.balanceTree()
 
-tree.traverse()
-
-tree.removeNode(with: 5)
-
-print("Traverse after remove:")
-tree.traverse()
+toPrint = ""
+for i in tree.toArray() {
+    toPrint += "\(i.value) "
+}
+print(toPrint)

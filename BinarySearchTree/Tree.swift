@@ -11,7 +11,7 @@ import Foundation
 class Tree<T: Comparable>{
     
     private var rootNode: Node<T>?
-    
+    private var nodeArray: [Node<T>] = []
     // amount of nodes
     private var size = 0
     
@@ -30,7 +30,7 @@ class Tree<T: Comparable>{
         add(newValue: newValue, node: node)
         
         // balance tree every 10 additions
-        if size % 10 == 0 {
+        if size % 16 == 0 {
             balanceTree()
         }
     }
@@ -97,6 +97,8 @@ class Tree<T: Comparable>{
             return
         }
         
+        size -= 1
+        
         if nodeToRemove == self.rootNode{
             self.rootNode = nodeToRemove.rigthNode
             self.rootNode!.parent = nil
@@ -109,7 +111,7 @@ class Tree<T: Comparable>{
         }
         
         removeChildNode(nodeToRemove, from: nodeToRemove.parent!)
-
+        
         if let rigthNode = nodeToRemove.rigthNode {
             add(to: nodeToRemove.parent!, node: rigthNode)
         }
@@ -117,8 +119,6 @@ class Tree<T: Comparable>{
         if let leftNode = nodeToRemove.leftNode {
             add(to: nodeToRemove.parent!, node: leftNode)
         }
-        
-        size -= 1
     }
     
     private func removeChildNode(_ child: Node<T>, from parent: Node<T>){
@@ -131,13 +131,34 @@ class Tree<T: Comparable>{
     }
     
     //MARK: Balance tree (TODO)
-    private func balanceTree(){
+    func balanceTree(){
+        self.toArray()
         
+        rootNode = nil
+        size = 0
+        
+        balanceTree(startIndex: 0, finishIndex: nodeArray.count-1)
+        
+        add(nodeArray[0].value)
+        add(nodeArray[size].value)
+    }
+    private func balanceTree(startIndex: Int, finishIndex: Int){
+        if startIndex == finishIndex { return }
+        
+        let index: Int = (finishIndex + startIndex) / 2
+        
+        if startIndex == index { return }
+        if finishIndex == index { return }
+
+        add(nodeArray[index].value)
+        
+        balanceTree(startIndex: startIndex,finishIndex: index)
+        balanceTree(startIndex: index,finishIndex: finishIndex)
     }
     
     //MARK: Getters
     ///get node by value
-    private func getNode(with value: T, node: Node<T>?) -> Node<T>?{
+    func getNode(with value: T, node: Node<T>?) -> Node<T>?{
         
         guard let node = node else {
             return nil
@@ -181,25 +202,28 @@ class Tree<T: Comparable>{
         return size
     }
     
-    //MARK: - Traverse
-    ///print all nodes values
-    func traverse(){
+    //MARK: - To Array
+    func toArray() -> [Node<T>]{
+        nodeArray = []
+        
         guard let rootNode = self.rootNode else {
-            print("nil")
-            return
+            return []
         }
         
-        traverse(node: rootNode)
+        toArray(node: rootNode)
+        
+        return nodeArray
     }
-    private func traverse(node: Node<T>){
+    
+    private func toArray(node: Node<T>){
         if let leftNode = node.leftNode {
-            traverse(node: leftNode)
+            toArray(node: leftNode)
         }
         
         if let rigthNode = node.rigthNode {
-            traverse(node: rigthNode)
+            toArray(node: rigthNode)
         }
         
-        print(node.value)
+        nodeArray.append(node)
     }
 }
