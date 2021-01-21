@@ -61,24 +61,73 @@ class Tree<T: Comparable>{
         }
     }
     
+    private func add(to rootNode: Node<T>, node: Node<T>){
+        
+        if node.value < rootNode.value {
+            
+            guard let leftNode = rootNode.leftNode else {
+                rootNode.leftNode = node
+                rootNode.leftNode!.parent = rootNode
+                return
+            }
+            
+            add(to: leftNode, node: node)
+            
+        } else {
+            
+            guard let rightNode = rootNode.rigthNode else {
+                rootNode.rigthNode = node
+                rootNode.rigthNode!.parent = rootNode
+                return
+            }
+            
+            add(to: rightNode, node: node)
+        }
+    }
+    
     //MARK: Remove node
     /// use to delete a node;
-    /// true - mean success, false - node doesn't exist, can't remove
-    func removeNode(with value: T) -> Bool{
-        
+    func removeNode(with value: T) {
         
         guard let rootNode = self.rootNode else {
-            return false
+            return
         }
         
         guard let nodeToRemove = getNode(with: value, node: rootNode) else {
-            return false
+            return
         }
         
-        print(nodeToRemove.value)
+        if nodeToRemove == self.rootNode{
+            self.rootNode = nodeToRemove.rigthNode
+            self.rootNode!.parent = nil
+            
+            if let leftNode = nodeToRemove.leftNode {
+                add(to: self.rootNode!, node: leftNode)
+            }
+            
+            return
+        }
         
-        //size -= 1
-        return true
+        removeChildNode(nodeToRemove, from: nodeToRemove.parent!)
+
+        if let rigthNode = nodeToRemove.rigthNode {
+            add(to: nodeToRemove.parent!, node: rigthNode)
+        }
+        
+        if let leftNode = nodeToRemove.leftNode {
+            add(to: nodeToRemove.parent!, node: leftNode)
+        }
+        
+        size -= 1
+    }
+    
+    private func removeChildNode(_ child: Node<T>, from parent: Node<T>){
+        if parent.rigthNode == child {
+            parent.rigthNode = nil
+        }
+        if parent.leftNode == child {
+            parent.leftNode = nil
+        }
     }
     
     //MARK: Balance tree (TODO)
