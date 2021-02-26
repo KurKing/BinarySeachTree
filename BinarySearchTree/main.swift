@@ -8,21 +8,55 @@
 import Foundation
 
 let tree = Tree<Int>()
+let elementsCount = 10000
 
-for i in 0..<7 {
-    tree.add(Int.random(in: -5...5))
+var startCalculationTime = Date().timeIntervalSinceReferenceDate
+
+for _ in 0..<elementsCount {
+    tree.add(Int.random(in: -20...20))
 }
 
-var toPrint = ""
-for i in tree.toArray() {
-    toPrint += "\(i.value) "
-}
-print(toPrint)
+print("Add \(elementsCount) elements ")
+var endCalculationTime = Date().timeIntervalSinceReferenceDate
+print("\(endCalculationTime-startCalculationTime) seconds")
 
-tree.balanceTree()
+print("\nSize: \(tree.size) ")
 
-toPrint = ""
-for i in tree.toArray() {
-    toPrint += "\(i.value) "
+startCalculationTime = Date().timeIntervalSinceReferenceDate
+
+let treeArray = tree.toArray()
+
+print("\nToArray \(elementsCount) elements ")
+endCalculationTime = Date().timeIntervalSinceReferenceDate
+print("\(endCalculationTime-startCalculationTime) seconds")
+
+startCalculationTime = Date().timeIntervalSinceReferenceDate
+
+for i in treeArray{
+    tree.removeNode(with: i)
 }
-print(toPrint)
+
+print("\nRemove \(elementsCount) elements ")
+endCalculationTime = Date().timeIntervalSinceReferenceDate
+print("\(endCalculationTime-startCalculationTime) seconds")
+
+print("\n### WORST CASE ###")
+startCalculationTime = Date().timeIntervalSinceReferenceDate
+
+for _ in 0..<elementsCount {
+    tree.add(1)
+}
+
+print("Add \(elementsCount) elements ")
+endCalculationTime = Date().timeIntervalSinceReferenceDate
+print("\(endCalculationTime-startCalculationTime) seconds")
+
+startCalculationTime = Date().timeIntervalSinceReferenceDate
+
+for _ in 0..<elementsCount {
+    tree.removeNode(with: 1)
+}
+
+print("\nRemove \(elementsCount) elements ")
+endCalculationTime = Date().timeIntervalSinceReferenceDate
+print("\(endCalculationTime-startCalculationTime) seconds")
